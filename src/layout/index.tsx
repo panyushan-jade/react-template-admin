@@ -9,8 +9,11 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
+import { MenuProps } from "antd";
 import { Layout, Menu, theme, Breadcrumb } from "antd";
+import HeaderComp from "./components/Header";
+import { useLoginStore } from "src/stores";
+import Login from "./components/Login";
 import "antd/dist/reset.css";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -32,20 +35,20 @@ const items: MenuProps["items"] = [
 
 const BasicLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const { userInfo } = useLoginStore();
+  console.log("userInfo: ", userInfo);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  if (!userInfo) {
+    return <Login />;
+  }
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
         style={{
           overflow: "auto",
           height: "100vh",
-          // position: 'fixed',
-          // left: 0,
-          // top: 0,
-          // bottom: 0,
         }}
         collapsible
         collapsed={collapsed}
@@ -66,7 +69,9 @@ const BasicLayout: React.FC = () => {
         />
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: "0 10px", background: colorBgContainer }}>
+          <HeaderComp />
+        </Header>
         {/* height：Header和Footer的默认高度是64 */}
         <Content
           style={{
@@ -86,7 +91,7 @@ const BasicLayout: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            66666
           </div>
           <div
             style={{
@@ -95,7 +100,7 @@ const BasicLayout: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            8888888888888888888888888888888888888888
           </div>
           <div
             style={{
