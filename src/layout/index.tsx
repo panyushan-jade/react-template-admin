@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -30,16 +31,23 @@ const items: MenuProps["items"] = [
 ].map((icon, index) => ({
   key: String(index + 1),
   icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
+  label: index === 0 ? "工作台" : `nav ${index + 1}`,
 }));
 
 const BasicLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
   const { userInfo } = useLoginStore();
   console.log("userInfo: ", userInfo);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const onMenuClick: MenuProps["onClick"] = ({ key }) => {
+    console.log("key: ", key);
+    navigate("/dashboard");
+  };
+
   if (!userInfo) {
     return <Login />;
   }
@@ -66,6 +74,7 @@ const BasicLayout: React.FC = () => {
           defaultSelectedKeys={["1"]}
           mode="inline"
           items={items}
+          onClick={onMenuClick}
         />
       </Sider>
       <Layout className="site-layout">
@@ -84,33 +93,7 @@ const BasicLayout: React.FC = () => {
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
-            66666
-          </div>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
-            8888888888888888888888888888888888888888
-          </div>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
-            Bill is a cat.
-          </div>
+          <Outlet />
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©2023 Created by Ant UED
