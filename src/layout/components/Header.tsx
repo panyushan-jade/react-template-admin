@@ -1,19 +1,18 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 import RightContent from "./RightContent";
 
+const { Text } = Typography;
+
 const HeaderComp: React.FC = () => {
-  //   const [color, setColor] = useState("#247fff");
-  //   const onChange = (e: any) => {
-  //     console.log("value: ", e.target.value);
-  //     setColor(e.target.value);
-  //   };
   return (
     <Row justify="space-between" align="middle">
       <Col>
-        <span>react-template-admin</span>
+        <Text strong>react-template-admin</Text>
       </Col>
-      <RightContent />
+      <Col style={{ display: "flex" }}>
+        <RightContent />
+      </Col>
     </Row>
   );
 };

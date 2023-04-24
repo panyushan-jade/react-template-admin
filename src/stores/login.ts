@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getLocalStorageItem } from "src/utils/localStorage";
+import { persist } from "zustand/middleware";
 
 type Info = Record<string, any> | null;
 
@@ -8,9 +8,16 @@ interface LoginState {
   setUserInfo: (info: Info) => void;
 }
 
-const useLoginStore = create<LoginState>((set) => ({
-  userInfo: getLocalStorageItem("userInfo"),
-  setUserInfo: (info) => set(() => ({ userInfo: info })),
-}));
+const useLoginStore = create<LoginState>()(
+  persist(
+    (set) => ({
+      userInfo: null,
+      setUserInfo: (info) => set(() => ({ userInfo: info })),
+    }),
+    {
+      name: "userInfo",
+    }
+  )
+);
 
 export default useLoginStore;

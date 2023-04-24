@@ -1,13 +1,14 @@
-import React from "react";
-import { Avatar, Dropdown, MenuProps } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import { useLoginStore } from "src/stores";
-import { removeLocalStorageItem } from "src/utils/localStorage";
+import React, { ChangeEvent } from "react";
+import { Avatar, Dropdown, MenuProps, Button, Input } from "antd";
+import { UserOutlined, SkinOutlined } from "@ant-design/icons";
+import { useLoginStore, useGlobalStore } from "src/stores";
+import { debounce } from "src/utils/func";
+import styles from "../index.module.scss";
 
 const RightContent: React.FC = () => {
   const { setUserInfo } = useLoginStore();
+  const { setColor, primaryColor } = useGlobalStore();
   const logoutHandle = () => {
-    removeLocalStorageItem("userInfo");
     setUserInfo(null);
   };
   const items: MenuProps["items"] = [
@@ -21,10 +22,25 @@ const RightContent: React.FC = () => {
     },
   ];
 
+  const changeMainColor = (e: ChangeEvent<HTMLInputElement>) => {
+    setColor(e.target.value);
+  };
+
   return (
-    <Dropdown menu={{ items }} placement="bottomRight">
-      <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
-    </Dropdown>
+    <>
+      <div className={styles.skin}>
+        <Button type="primary" shape="circle" icon={<SkinOutlined />} />
+        <Input
+          type="color"
+          className={styles.skin_input}
+          defaultValue={primaryColor}
+          onChange={debounce(changeMainColor, 500)}
+        ></Input>
+      </div>
+      <Dropdown menu={{ items }} placement="bottomRight">
+        <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+      </Dropdown>
+    </>
   );
 };
 

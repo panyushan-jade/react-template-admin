@@ -16,7 +16,7 @@ import { Button, Divider, message, Space, Tabs } from "antd";
 import type { CSSProperties } from "react";
 import React, { useState } from "react";
 import { useLoginStore } from "src/stores";
-import { setLocalStorageItem } from "src/utils/localStorage";
+// import { setLocalStorageItem } from "src/utils/localStorage";
 
 type LoginType = "phone" | "account";
 
@@ -38,7 +38,6 @@ const Login = () => {
     return delay(1000).then(() => {
       console.log("values", values);
       setUserInfo(values);
-      setLocalStorageItem("userInfo", values);
     });
   };
   return (
