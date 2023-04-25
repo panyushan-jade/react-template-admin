@@ -1,9 +1,12 @@
 import React, { Suspense, lazy } from "react";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, Spin } from "antd";
 import { useGlobalStore } from "src/stores";
 import "antd/dist/reset.css";
-
 const BasicLayout = lazy(() => import("./layout"));
+
+export function authLoader() {
+  return { isAdmin: true };
+}
 
 const App: React.FC = () => {
   const { primaryColor } = useGlobalStore();
@@ -15,11 +18,10 @@ const App: React.FC = () => {
         },
       }}
     >
-      <Suspense fallback={"Loading~~~~~~~~"}>
+      <Suspense fallback={<Spin size="large" className="globa_spin" />}>
         <BasicLayout />
       </Suspense>
     </ConfigProvider>
   );
 };
-
 export default App;
