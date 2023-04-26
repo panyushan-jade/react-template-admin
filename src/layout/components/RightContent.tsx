@@ -2,17 +2,14 @@ import React, { ChangeEvent } from "react";
 import { Avatar, Dropdown, MenuProps, Button, Input } from "antd";
 import { UserOutlined, SkinOutlined } from "@ant-design/icons";
 import { useLoginStore, useGlobalStore } from "src/stores";
-import { useNavigate } from "react-router-dom";
 import { debounce } from "src/utils/func";
 import styles from "../index.module.scss";
 
 const RightContent: React.FC = () => {
   const { setUserInfo } = useLoginStore();
   const { setColor, primaryColor } = useGlobalStore();
-  const navigate = useNavigate();
   const logoutHandle = () => {
     setUserInfo(null);
-    navigate("/login", { replace: true });
   };
   const items: MenuProps["items"] = [
     {

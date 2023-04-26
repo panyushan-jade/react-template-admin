@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { ErrorPage } from "src/pages";
+import LoginPage from "../layout/components/Login";
 // FormPage
 import App, { authLoader } from "src/App";
 import { createBrowserRouter, Navigate } from "react-router-dom";
@@ -17,7 +18,6 @@ import {
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const FormPage = lazy(() => import("../pages/FormPage"));
 const TablePage = lazy(() => import("../pages/TablePage"));
-const LoginPage = lazy(() => import("../layout/components/Login"));
 
 const routes = [
   {

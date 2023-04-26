@@ -5,6 +5,7 @@ import {
   useNavigate,
   NonIndexRouteObject,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import { MenuProps } from "antd";
 import { Layout, Menu, theme, Spin } from "antd";
@@ -59,7 +60,7 @@ const BasicLayout: any = () => {
   };
 
   if (!userInfo) {
-    navigate("/login", { replace: true });
+    return <Navigate to="/login" replace={true} />;
   }
   return (
     <Layout style={{ minHeight: "100vh" }}>

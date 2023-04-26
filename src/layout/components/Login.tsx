@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   AlipayOutlined,
   LockOutlined,
@@ -15,9 +16,7 @@ import {
 } from "@ant-design/pro-components";
 import { Button, Divider, message, Space, Tabs } from "antd";
 import type { CSSProperties } from "react";
-import React, { useState } from "react";
 import { useLoginStore } from "src/stores";
-// import { setLocalStorageItem } from "src/utils/localStorage";
 
 type LoginType = "phone" | "account";
 
@@ -38,6 +37,7 @@ const Login = () => {
   const navigate = useNavigate();
   const onFinish = (values: any) => {
     return delay(1000).then(() => {
+      message.success("登录成功🎉🎉🎉");
       setUserInfo(values);
       navigate("/", { replace: true });
     });
