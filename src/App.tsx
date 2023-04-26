@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { ConfigProvider, Spin } from "antd";
 import { useGlobalStore } from "src/stores";
 import "antd/dist/reset.css";
+
 const BasicLayout = lazy(() => import("./layout"));
 
 export function authLoader() {
@@ -14,7 +15,7 @@ const App: React.FC = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: primaryColor || "#247fff",
+          colorPrimary: primaryColor,
         },
       }}
     >

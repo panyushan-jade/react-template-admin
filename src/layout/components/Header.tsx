@@ -8,7 +8,9 @@ const HeaderComp: React.FC = () => {
   return (
     <Row justify="space-between" align="middle">
       <Col>
-        <Text strong>react-template-admin</Text>
+        <Text strong style={{ fontSize: 18 }}>
+          react-template-admin
+        </Text>
       </Col>
       <Col style={{ display: "flex" }}>
         <RightContent />

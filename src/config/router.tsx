@@ -15,7 +15,8 @@ import {
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));
-const FormPage = lazy(() => import("../pages/Form"));
+const FormPage = lazy(() => import("../pages/FormPage"));
+const TablePage = lazy(() => import("../pages/TablePage"));
 
 const routes = [
   {
@@ -37,6 +38,12 @@ const routes = [
             title: "Form",
             icon: <BarChartOutlined />,
             element: <FormPage />,
+          },
+          {
+            path: "table",
+            title: "Table",
+            icon: <BarChartOutlined />,
+            element: <TablePage />,
           },
           {
             path: "*",

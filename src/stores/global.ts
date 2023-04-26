@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface GlobalState {
-  primaryColor: string | undefined;
+  primaryColor: string;
   setColor: (color: string) => void;
 }
 
@@ -10,7 +10,7 @@ interface GlobalState {
 const useGlobalStore = create<GlobalState>()(
   persist(
     (set) => ({
-      primaryColor: undefined,
+      primaryColor: "#247fff",
       setColor: (color) => set(() => ({ primaryColor: color })),
     }),
     {

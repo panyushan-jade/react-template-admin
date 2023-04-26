@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { MenuProps } from "antd";
-import { Layout, Menu, theme, Breadcrumb, Spin } from "antd";
+import { Layout, Menu, theme, Spin } from "antd";
 import HeaderComp from "./components/Header";
 import { useLoginStore } from "src/stores";
 import Login from "./components/Login";
@@ -31,6 +31,7 @@ const BasicLayout: any = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const { isAdmin } = useLoaderData() as any;
+
   const getItems: any = (children: RouteType[]) => {
     return children.map((item) => {
       if (item.children) {
@@ -94,36 +95,15 @@ const BasicLayout: any = () => {
 
         <Content
           style={{
-            margin: "0 16px",
+            padding: 16,
             overflow: "auto",
             height: `calc(100vh - 128px)`,
           }}
         >
           {isAdmin ? (
-            <>
-              <Breadcrumb
-                style={{ margin: "16px 0" }}
-                items={[
-                  {
-                    title: "Home",
-                  },
-                  {
-                    title: <a href="">Application Center</a>,
-                  },
-                  {
-                    title: <a href="">Application List</a>,
-                  },
-                  {
-                    title: "An Application",
-                  },
-                ]}
-              />
-              <Suspense
-                fallback={<Spin size="large" className="content_spin" />}
-              >
-                <Outlet />
-              </Suspense>
-            </>
+            <Suspense fallback={<Spin size="large" className="content_spin" />}>
+              <Outlet />
+            </Suspense>
           ) : (
             <NoAuthPage />
           )}
