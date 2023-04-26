@@ -17,6 +17,7 @@ import {
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const FormPage = lazy(() => import("../pages/FormPage"));
 const TablePage = lazy(() => import("../pages/TablePage"));
+const LoginPage = lazy(() => import("../layout/components/Login"));
 
 const routes = [
   {
@@ -52,6 +53,10 @@ const routes = [
         ],
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
 ];
 

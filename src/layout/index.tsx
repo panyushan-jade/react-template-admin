@@ -10,7 +10,7 @@ import { MenuProps } from "antd";
 import { Layout, Menu, theme, Spin } from "antd";
 import HeaderComp from "./components/Header";
 import { useLoginStore } from "src/stores";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import { routes } from "src/config/router";
 import { NoAuthPage } from "src/pages";
 import "antd/dist/reset.css";
@@ -51,7 +51,7 @@ const BasicLayout: any = () => {
   };
 
   const menuItems: MenuProps["items"] = getItems(
-    routes[0].children[0].children.filter((item) => item.path !== "*")
+    routes[0].children![0].children.filter((item) => item.path !== "*")
   );
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
@@ -59,7 +59,7 @@ const BasicLayout: any = () => {
   };
 
   if (!userInfo) {
-    return <Login />;
+    navigate("/login", { replace: true });
   }
   return (
     <Layout style={{ minHeight: "100vh" }}>

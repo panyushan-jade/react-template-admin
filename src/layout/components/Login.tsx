@@ -6,6 +6,7 @@ import {
   UserOutlined,
   WeiboOutlined,
 } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import {
   LoginFormPage,
   ProFormCaptcha,
@@ -34,10 +35,11 @@ function delay(ms: number) {
 const Login = () => {
   const [loginType, setLoginType] = useState<LoginType>("account");
   const { setUserInfo } = useLoginStore();
+  const navigate = useNavigate();
   const onFinish = (values: any) => {
     return delay(1000).then(() => {
-      console.log("values", values);
       setUserInfo(values);
+      navigate("/", { replace: true });
     });
   };
   return (
