@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { message } from "antd";
 interface IRequestOptions {
   url: string;
   method: AxiosRequestConfig["method"];
@@ -24,6 +25,7 @@ class HttpClient {
     return response;
   }
   private handleErrorResponse(error: any): Promise<never> {
+    message.error(error.message || "请求失败");
     return Promise.reject(error);
   }
   public async request<T = any>({

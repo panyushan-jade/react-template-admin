@@ -78,13 +78,10 @@ const columns: ProColumns<GithubIssueItem>[] = [
     },
   },
   {
-    disable: true,
+    editable: false,
     title: "标签",
     dataIndex: "labels",
     search: false,
-    renderFormItem: (_, { defaultRender }) => {
-      return defaultRender(_);
-    },
     render: (_, record) => (
       <Space>
         {record.labels.map(({ name, color }) => (
@@ -169,12 +166,6 @@ const TablePage: React.FC = () => {
       search={{
         labelWidth: "auto",
       }}
-      options={{
-        setting: {
-          listsHeight: 400,
-        },
-      }}
-      dateFormatter="string"
       headerTitle="高级表格"
       toolBarRender={() => [
         <Button

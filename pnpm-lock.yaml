@@ -40,6 +40,9 @@ dependencies:
   axios:
     specifier: ^1.3.6
     version: registry.npmmirror.com/axios@1.3.6
+  dayjs:
+    specifier: ^1.11.7
+    version: registry.npmmirror.com/dayjs@1.11.7
   mockjs:
     specifier: ^1.1.0
     version: registry.npmmirror.com/mockjs@1.1.0
