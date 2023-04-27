@@ -110,7 +110,7 @@ const BasicLayout: any = () => {
           )}
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2023 Created by Ant UED
+          React Template Admin ©2023 Created by Jade
         </Footer>
       </Layout>
     </Layout>
