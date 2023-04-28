@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
-import { Avatar, Dropdown, MenuProps, Button, Input } from "antd";
-import { UserOutlined, SkinOutlined } from "@ant-design/icons";
+import { Avatar, Dropdown, MenuProps, Button, Input, Badge, Space } from "antd";
+import { UserOutlined, SkinOutlined, BellOutlined } from "@ant-design/icons";
 import { useLoginStore, useGlobalStore } from "@stores/index";
 import { debounce } from "@utils/func";
 import styles from "../index.module.scss";
@@ -27,7 +27,12 @@ const RightContent: React.FC = () => {
   };
 
   return (
-    <>
+    <Space size={20}>
+      <span style={{ display: "flex" }}>
+        <Badge count={12}>
+          <BellOutlined style={{ fontSize: 24 }} />
+        </Badge>
+      </span>
       <div className={styles.skin}>
         <Button type="primary" shape="circle" icon={<SkinOutlined />} />
         <Input
@@ -40,7 +45,7 @@ const RightContent: React.FC = () => {
       <Dropdown menu={{ items }} placement="bottomRight">
         <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
       </Dropdown>
-    </>
+    </Space>
   );
 };
 
