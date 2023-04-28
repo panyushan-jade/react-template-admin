@@ -16,7 +16,7 @@ import {
 } from "@ant-design/pro-components";
 import { Button, Divider, message, Space, Tabs } from "antd";
 import type { CSSProperties } from "react";
-import { useLoginStore } from "src/stores";
+import { useLoginStore } from "@stores/index";
 
 type LoginType = "phone" | "account";
 

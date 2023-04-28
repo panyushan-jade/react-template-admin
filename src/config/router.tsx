@@ -1,8 +1,8 @@
 import React, { lazy } from "react";
-import { ErrorPage } from "src/pages";
+import ErrorPage from "@components/ErrorPage";
 import LoginPage from "../layout/components/Login";
 // FormPage
-import App, { authLoader } from "src/App";
+import App, { authLoader } from "../App";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import {
   AppstoreOutlined,

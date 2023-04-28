@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from "react";
 import { Avatar, Dropdown, MenuProps, Button, Input } from "antd";
 import { UserOutlined, SkinOutlined } from "@ant-design/icons";
-import { useLoginStore, useGlobalStore } from "src/stores";
-import { debounce } from "src/utils/func";
+import { useLoginStore, useGlobalStore } from "@stores/index";
+import { debounce } from "@utils/func";
 import styles from "../index.module.scss";
 
 const RightContent: React.FC = () => {

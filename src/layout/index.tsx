@@ -10,10 +10,9 @@ import {
 import { MenuProps } from "antd";
 import { Layout, Menu, theme, Spin } from "antd";
 import HeaderComp from "./components/Header";
-import { useLoginStore } from "src/stores";
-// import Login from "./components/Login";
-import { routes } from "src/config/router";
-import { NoAuthPage } from "src/pages";
+import { useLoginStore } from "@stores/index";
+import { routes } from "../config/router";
+import NoAuthPage from "@components/NoAuthPage";
 import "antd/dist/reset.css";
 
 type RouteType = NonIndexRouteObject & {

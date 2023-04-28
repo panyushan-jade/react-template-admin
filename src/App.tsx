@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { ConfigProvider, Spin } from "antd";
-import { useGlobalStore } from "src/stores";
+import { useGlobalStore } from "@stores/index";
 import zhCN from "antd/locale/zh_CN";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
