@@ -34,25 +34,23 @@ const BasicLayout: any = () => {
 
   const getItems: any = (children: RouteType[]) => {
     return children.map((item) => {
-      if (item.children) {
-        return getItems(item.children);
-      } else {
-        return {
-          key: item.index
-            ? "/"
-            : item.path?.startsWith("/")
-            ? item.path
-            : `/${item.path}`,
-          icon: item.icon,
-          label: item.title,
-        };
-      }
+      return {
+        key: item.index
+          ? "/"
+          : item.path?.startsWith("/")
+          ? item.path
+          : `/${item.path}`,
+        icon: item.icon,
+        label: item.title,
+        children: item.children ? getItems(item.children) : null,
+      };
     });
   };
 
   const menuItems: MenuProps["items"] = getItems(
     routes[0].children![0].children.filter((item) => item.path !== "*")
   );
+  console.log("menuItems====>", menuItems);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);
