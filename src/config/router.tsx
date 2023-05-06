@@ -15,13 +15,17 @@ import {
   // ShopOutlined,
   // TeamOutlined,
   // UploadOutlined,
-  // UserOutlined,
+  UserOutlined,
   // VideoCameraOutlined,
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const FormPage = lazy(() => import("../pages/FormPage"));
 const TablePage = lazy(() => import("../pages/TablePage"));
+const AccountCenter = lazy(() => import("../pages/AccountPage/AccountCenter"));
+const AccountSettings = lazy(
+  () => import("../pages/AccountPage/AccountSettings")
+);
 const DetailPage = lazy(() => import("../pages/DetailPage"));
 
 const routes = [
@@ -56,6 +60,23 @@ const routes = [
             title: "详情页",
             icon: <BarsOutlined />,
             element: <DetailPage />,
+          },
+          {
+            path: "account",
+            title: "个人页",
+            icon: <UserOutlined />,
+            children: [
+              {
+                path: "/account/center",
+                title: "个人中心",
+                element: <AccountCenter />,
+              },
+              {
+                path: "/account/settings",
+                title: "个人设置",
+                element: <AccountSettings />,
+              },
+            ],
           },
           {
             path: "*",

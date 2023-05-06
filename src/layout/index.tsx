@@ -59,6 +59,15 @@ const BasicLayout: any = () => {
   if (!userInfo) {
     return <Navigate to="/login" replace={true} />;
   }
+
+  const renderOpenKeys = () => {
+    const arr = pathname.split("/").slice(0, -1);
+    const result = arr.map(
+      (_, index) => "/" + arr.slice(1, index + 1).join("/")
+    );
+    return result;
+  };
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -80,6 +89,7 @@ const BasicLayout: any = () => {
         <Menu
           theme="dark"
           defaultSelectedKeys={[pathname]}
+          defaultOpenKeys={renderOpenKeys()}
           mode="inline"
           items={menuItems}
           onClick={onMenuClick}
