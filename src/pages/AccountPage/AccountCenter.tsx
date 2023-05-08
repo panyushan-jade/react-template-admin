@@ -1,22 +1,28 @@
 import { ProCard } from "@ant-design/pro-components";
 import React from "react";
+import { Avatar, Row, Col, Typography } from "antd";
+
+const url =
+  "https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png";
 
 const AccountCenter: React.FC = () => {
   return (
-    <ProCard wrap gutter={[0, 50]}>
-      <ProCard colSpan={24} wrap hoverable title="退款申请">
-        <ProCard colSpan={6}>取货单号：1000000000</ProCard>
-        <ProCard colSpan={6}>状态：已取货</ProCard>
-        <ProCard colSpan={6}>销售单号：1234123421</ProCard>
-        <ProCard colSpan={6}>子订单：3214321432</ProCard>
-      </ProCard>
-      <ProCard colSpan={24} wrap hoverable title="用户信息">
-        <ProCard colSpan={6}>用户姓名：付小小</ProCard>
-        <ProCard colSpan={6}>联系电话：18100000000</ProCard>
-        <ProCard colSpan={6}>常用快递：菜鸟仓储</ProCard>
-        <ProCard colSpan={6}>取货地址：浙江省杭州市西湖区万塘路18号</ProCard>
-        <ProCard colSpan={6}>备注：无</ProCard>
-      </ProCard>
+    <ProCard wrap gutter={[0, 50]} layout="center" style={{ height: "100%" }}>
+      <Row
+        style={{ flexDirection: "column", alignItems: "center" }}
+        gutter={[0, 20]}
+      >
+        <Col>
+          <Avatar
+            size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+            src={<img src={url} alt="avatar" />}
+          />
+        </Col>
+        <Col>
+          <Typography.Title level={3}>react-template-admin</Typography.Title>
+        </Col>
+        <Col>海纳百川，有容乃大</Col>
+      </Row>
     </ProCard>
   );
 };
