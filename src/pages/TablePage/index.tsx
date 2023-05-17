@@ -19,7 +19,7 @@ export const waitTime = async (time: number = 100) => {
 };
 
 type GithubIssueItem = {
-  id: number;
+  id: string;
   number: number;
   title: string;
   labels: {
@@ -151,7 +151,7 @@ const TablePage: React.FC = () => {
         await waitTime(500);
         const res = await getTable();
         return {
-          data: res.data?.list,
+          data: res.data,
           // success 请返回 true，
           // 不然 table 会停止解析数据，即使有数据
           success: res.code === 200,

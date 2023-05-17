@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { Avatar, Dropdown, MenuProps, Button, Input, Badge, Space } from "antd";
-import { UserOutlined, SkinOutlined, BellOutlined } from "@ant-design/icons";
+import { SkinOutlined, BellOutlined } from "@ant-design/icons";
 import { useLoginStore, useGlobalStore } from "@stores/index";
 import { debounce } from "@utils/func";
 import styles from "../index.module.scss";
@@ -43,7 +43,10 @@ const RightContent: React.FC = () => {
         ></Input>
       </div>
       <Dropdown menu={{ items }} placement="bottomRight">
-        <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
+        <Avatar
+          src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+          style={{ cursor: "pointer" }}
+        />
       </Dropdown>
     </Space>
   );

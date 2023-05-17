@@ -1,22 +1,14 @@
 import React, { lazy } from "react";
 import ErrorPage from "@components/ErrorPage";
 import LoginPage from "../layout/components/Login";
-// FormPage
 import App, { authLoader } from "../App";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import {
-  // AppstoreOutlined,
-  // BarChartOutlined,
   DashboardOutlined,
   EditOutlined,
   TableOutlined,
   BarsOutlined,
-  // CloudOutlined,
-  // ShopOutlined,
-  // TeamOutlined,
-  // UploadOutlined,
   UserOutlined,
-  // VideoCameraOutlined,
 } from "@ant-design/icons";
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));

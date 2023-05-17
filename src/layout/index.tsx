@@ -22,7 +22,7 @@ type RouteType = NonIndexRouteObject & {
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const BasicLayout: any = () => {
+const BasicLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -50,7 +50,6 @@ const BasicLayout: any = () => {
   const menuItems: MenuProps["items"] = getItems(
     routes[0].children![0].children.filter((item) => item.path !== "*")
   );
-  console.log("menuItems====>", menuItems);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);
@@ -100,7 +99,6 @@ const BasicLayout: any = () => {
           <HeaderComp />
         </Header>
         {/* height：Header和Footer的默认高度是64 */}
-
         <Content
           style={{
             padding: 16,
@@ -117,7 +115,7 @@ const BasicLayout: any = () => {
           )}
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          React Template Admin ©2023 Created by Jade
+          react template admin ©2023 Created by Jade
         </Footer>
       </Layout>
     </Layout>

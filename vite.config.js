@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { resolve } = require("path");
+import { resolve } from "path";
 export default defineConfig({
   resolve: {
     alias: {

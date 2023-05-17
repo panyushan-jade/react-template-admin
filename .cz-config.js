@@ -22,22 +22,9 @@ module.exports = {
   isTicketNumberRequired: false,
   ticketNumberPrefix: "TICKET-",
   ticketNumberRegExp: "\\d{1,5}",
-  // it needs to match the value for field type. Eg.: 'fix'
-  /*
-      scopeOverrides: {
-        fix: [
-          {name: 'merge'},
-          {name: 'style'},
-          {name: 'e2eTest'},
-          {name: 'unitTest'}
-        ]
-      },
-      */
-  // override the messages, defaults are as follows
   messages: {
     type: "选择一种你的提交类型:",
     scope: "选择一个scope (可选):",
-    // used if allowCustomScopes is true
     customScope: "Denote the SCOPE of this change:",
     subject: "简短说明(最多40个字):",
     body: '长说明，使用"|"换行(可选)：\n',
@@ -47,11 +34,6 @@ module.exports = {
   },
   allowCustomScopes: true,
   allowBreakingChanges: ["feat", "fix"],
-  // skip any questions you want
   skipQuestions: ["scope", "body", "breaking"],
-  // limit subject length
   subjectLimit: 100,
-  // breaklineChar: '|', // It is supported for fields body and footer.
-  // footerPrefix : 'ISSUES CLOSED:'
-  // askForBreakingChangeFirst : true, // default is false
 };
