@@ -80,11 +80,9 @@ pnmp preview
 
 # 运行效果
 
-<!-- ![](./video.mp4) -->
-
-<video width="320" height="240" controls>
-    <source src="./video.mp4" type="video/mp4">
-</video>
+<p align="center">
+   <img src="./preview.gif"/>
+</p>
 
 # git 提交
 
