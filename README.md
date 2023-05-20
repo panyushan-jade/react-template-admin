@@ -82,7 +82,11 @@ pnmp preview
 
 <!-- ![](./video.mp4) -->
 
-<video src="./video.mp4" controls height="600px"></video>
+```HTML
+<video width="320" height="240" controls>
+    <source src="./video.mp4" type="video/mp4">
+</video>
+```
 
 # git 提交
 
