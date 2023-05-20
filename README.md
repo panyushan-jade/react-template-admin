@@ -80,7 +80,8 @@ pnmp preview
 
 # 运行效果
 
-<video src="./demonstrate.webm" controls height="600px"></video>
+![](./demonstrate.webm)
+<!-- <video src="./demonstrate.webm" controls height="600px"></video> -->
 
 # git 提交
 
