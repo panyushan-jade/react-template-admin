@@ -5,17 +5,18 @@
 </p>
 <!-- href="https://nlrx-wjc.github.io/react-antd-admin-template/" target="_blank" -->
 
-一个轻量级React18后端管理模板，旨在快速搭建后端管理系统包含基础功能不做过渡封装，快速扩展
+一个轻量级 React18 后端管理模板，旨在快速搭建后端管理系统包含基础功能不做过渡封装，快速扩展
 
 技术栈：
+
 - react18
-- react-router6 
+- react-router6
 - zustand4
 - vite4
 - axios
 - fakerjs、
 - dayjs
-......
+  ......
 
 支持的功能：
 
@@ -24,7 +25,7 @@
 - [x] 路由鉴权
 - [x] 动态主题
 - [x] 错误处理
-- [x] axios封装
+- [x] axios 封装
 
 # 目录结构
 
@@ -77,7 +78,12 @@ pnmp preview
 
 ```
 
-# git提交
+# 运行效果
+
+<video src="./demonstrate.webm" controls height="600px"></video>
+
+# git 提交
+
 ```shell
 # 添加到暂存区
 git add -A
@@ -88,12 +94,12 @@ pnpm cz
 
 ```
 
-
-<!-- 
+<!--
 启动完成后会自动打开浏览器访问 [http://localhost:3000](http://localhost:3000)， 你看到下面的页面就代表操作成功了。
 
 ![](./guide.gif) -->
 
 ## 最后
-你觉得有不错的想法及更好的实现可以提pr，大家一起学习进步~
+
+你觉得有不错的想法及更好的实现可以提 pr，大家一起学习进步~</br>
 如果你觉得这个项目还不错，点个 star ⭐️ 支持一下 thanks~
