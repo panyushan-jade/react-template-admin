@@ -65,16 +65,16 @@ git clone https://github.com/panyushan-jade/react-template-admin.git
 cd react-template-admin
 
 # 安装依赖
-pnmp install(推荐使用pnpm)
+pnpm install(推荐使用pnpm)
 
 # 启动
-pnmp start
+pnpm start
 
 # 构建
-pnmp build
+pnpm build
 
 # 预览
-pnmp preview
+pnpm preview
 
 ```
 
@@ -98,5 +98,5 @@ pnpm cz
 
 ## 最后
 
-你觉得有不错的想法及更好的实现可以提 pr，大家一起学习进步~</br>
+目前还有很多不足的地方，如果你觉得有不错的想法及更好的实现可以提 pr，大家一起学习进步~</br>
 如果你觉得这个项目还不错，点个 star ⭐️ 支持一下 thanks~
