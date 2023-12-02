@@ -78,7 +78,7 @@ pnpm preview
 
 ```
 
-# 运行效果
+# 运行效果(账号密码随便填)
 
 <p align="center">
    <img src="./preview.gif"/>
