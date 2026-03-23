@@ -15,7 +15,11 @@ export function authLoader() {
 }
 
 const App: React.FC = () => {
-  const { primaryColor } = useGlobalStore();
+  const { primaryColor, _hasHydrated } = useGlobalStore();
+
+  if (!_hasHydrated) {
+    return <Spin size="large" className="globa_spin" />;
+  }
 
   return (
     <ConfigProvider

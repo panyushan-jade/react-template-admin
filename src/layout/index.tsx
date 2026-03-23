@@ -26,7 +26,7 @@ const BasicLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { userInfo } = useLoginStore();
+  const { userInfo, _hasHydrated } = useLoginStore();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -54,6 +54,10 @@ const BasicLayout: React.FC = () => {
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);
   };
+
+  if (!_hasHydrated) {
+    return <Spin size="large" className="globa_spin" />;
+  }
 
   if (!userInfo) {
     return <Navigate to="/login" replace={true} />;
@@ -98,7 +102,6 @@ const BasicLayout: React.FC = () => {
         <Header style={{ padding: "0 10px", background: colorBgContainer }}>
           <HeaderComp />
         </Header>
-        {/* height：Header和Footer的默认高度是64 */}
         <Content
           style={{
             padding: 16,
