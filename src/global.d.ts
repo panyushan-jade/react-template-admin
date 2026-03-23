@@ -1,9 +1,10 @@
 declare module "*.less" {
-  const style: any;
+  const style: { [className: string]: string };
   export default style;
 }
+
 declare module "*.scss" {
-  const style: any;
+  const style: { [className: string]: string };
   export default style;
 }
 
@@ -18,4 +19,50 @@ declare module "*.jpeg";
 declare module "*.gif";
 declare module "*.bmp";
 declare module "*.tiff";
-declare module "faker";
+
+interface UserInfo {
+  id: string;
+  username: string;
+  nickname?: string;
+  avatar?: string;
+  email?: string;
+  phone?: string;
+  roles?: string[];
+}
+
+interface MenuItem {
+  key: string;
+  label: string;
+  icon?: React.ReactNode;
+  children?: MenuItem[];
+  path?: string;
+  hideInMenu?: boolean;
+}
+
+interface TableListItem {
+  id: string | number;
+  [key: string]: unknown;
+}
+
+interface ApiResponse<T = unknown> {
+  code: number;
+  message: string;
+  data: T;
+  success: boolean;
+}
+
+interface PaginationParams {
+  current: number;
+  pageSize: number;
+  total?: number;
+}
+
+interface ImportMetaEnv {
+  readonly VITE_API_BASE_URL: string;
+  readonly VITE_APP_TITLE: string;
+  readonly MODE: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

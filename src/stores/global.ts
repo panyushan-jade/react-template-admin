@@ -1,26 +1,28 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 interface GlobalState {
   primaryColor: string;
   setColor: (color: string) => void;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
-//partialize 过滤属性，存储哪些字段到localStorage
 const useGlobalStore = create<GlobalState>()(
   persist(
     (set) => ({
       primaryColor: "#247fff",
       setColor: (color) => set(() => ({ primaryColor: color })),
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: "primaryColor",
-      partialize: (state) =>
-        Object.fromEntries(
-          Object.entries(state).filter(([key]) =>
-            ["primaryColor"].includes(key)
-          )
-        ),
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ primaryColor: state.primaryColor }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

@@ -15,21 +15,48 @@ import {
   ProFormText,
 } from "@ant-design/pro-components";
 import { Button, Divider, message, Space, Tabs } from "antd";
-import type { CSSProperties } from "react";
 import { useLoginStore } from "@stores/index";
 
 type LoginType = "phone" | "account";
 
-const iconStyles: CSSProperties = {
-  color: "rgba(0, 0, 0, 0.2)",
-  fontSize: "18px",
-  verticalAlign: "middle",
-  cursor: "pointer",
-};
+const socialLoginConfig = [
+  { key: "alipay", Icon: AlipayOutlined, color: "#1677FF" },
+  { key: "taobao", Icon: TaobaoOutlined, color: "#FF6A10" },
+  { key: "weibo", Icon: WeiboOutlined, color: "#333333" },
+];
 
-function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const SocialIcon: React.FC<{
+  Icon: React.ComponentType<{ style?: React.CSSProperties }>;
+  color: string;
+  onClick?: () => void;
+}> = ({ Icon, color, onClick }) => (
+  <div
+    onClick={onClick}
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: 40,
+      width: 40,
+      border: "1px solid #D4D8DD",
+      borderRadius: "50%",
+      cursor: "pointer",
+      transition: "all 0.3s",
+    }}
+  >
+    <Icon style={{ color, fontSize: 18, verticalAlign: "middle" }} />
+  </div>
+);
+
+const SocialLoginIcons: React.FC = () => (
+  <Space align="center" size={24}>
+    {socialLoginConfig.map(({ key, Icon, color }) => (
+      <SocialIcon key={key} Icon={Icon} color={color} />
+    ))}
+  </Space>
+);
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Login = () => {
   const [loginType, setLoginType] = useState<LoginType>("account");
@@ -93,50 +120,7 @@ const Login = () => {
                 其他登录方式
               </span>
             </Divider>
-            <Space align="center" size={24}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  height: 40,
-                  width: 40,
-                  border: "1px solid #D4D8DD",
-                  borderRadius: "50%",
-                }}
-              >
-                <AlipayOutlined style={{ ...iconStyles, color: "#1677FF" }} />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  height: 40,
-                  width: 40,
-                  border: "1px solid #D4D8DD",
-                  borderRadius: "50%",
-                }}
-              >
-                <TaobaoOutlined style={{ ...iconStyles, color: "#FF6A10" }} />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  height: 40,
-                  width: 40,
-                  border: "1px solid #D4D8DD",
-                  borderRadius: "50%",
-                }}
-              >
-                <WeiboOutlined style={{ ...iconStyles, color: "#333333" }} />
-              </div>
-            </Space>
+            <SocialLoginIcons />
           </div>
         }
       >

@@ -1,11 +1,13 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
-type Info = Record<string, any> | null;
+type Info = Record<string, unknown> | null;
 
 interface LoginState {
   userInfo: Info;
   setUserInfo: (info: Info) => void;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
 const useLoginStore = create<LoginState>()(
@@ -13,9 +15,15 @@ const useLoginStore = create<LoginState>()(
     (set) => ({
       userInfo: null,
       setUserInfo: (info) => set(() => ({ userInfo: info })),
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: "userInfo",
+      storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );
