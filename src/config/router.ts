@@ -118,6 +118,15 @@ const router = createRouter({
 
 const whiteList = ['/login', '/404', '/401']
 
+export function resetRouter() {
+  const newRouter = createRouter({
+    history: createWebHistory(),
+    routes: constantRoutes,
+    scrollBehavior: () => ({ left: 0, top: 0 }),
+  })
+  ;(router as any).matcher = (newRouter as any).matcher
+}
+
 router.beforeEach(async (to, _from, next) => {
   NProgress.start()
 
@@ -131,13 +140,18 @@ router.beforeEach(async (to, _from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      const hasRoles = userStore.roles && userStore.roles.length > 0
+      const hasRoutes = permissionStore.routes.length > 0
 
-      if (hasRoles) {
+      if (hasRoutes) {
         next()
       } else {
         try {
-          await userStore.fetchUserInfo()
+          const hasRoles = userStore.roles && userStore.roles.length > 0
+
+          if (!hasRoles) {
+            await userStore.fetchUserInfo()
+          }
+
           const roles = userStore.roles
           const accessRoutes = permissionStore.generateRoutes(roles)
 
@@ -153,6 +167,8 @@ router.beforeEach(async (to, _from, next) => {
           next({ ...to, replace: true })
         } catch (error) {
           await userStore.logoutAction()
+          permissionStore.resetRoutes()
+          resetRouter()
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }
