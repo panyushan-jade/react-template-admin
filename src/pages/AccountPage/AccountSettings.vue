@@ -172,8 +172,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
+import { useUserStore } from '@store/user'
+
+const userStore = useUserStore()
 
 const activeTab = ref('basic')
 const basicLoading = ref(false)
@@ -184,13 +187,28 @@ const basicFormRef = ref<FormInstance>()
 const passwordFormRef = ref<FormInstance>()
 
 const basicForm = reactive({
-  email: 'admin@example.com',
-  nickname: 'vue-template-admin',
-  bio: '海纳百川，有容乃大',
-  country: 'CN',
-  region: ['zhejiang', 'hangzhou'],
-  phone: '13800138000',
+  email: '',
+  nickname: '',
+  bio: '',
+  country: '',
+  region: [] as string[],
+  phone: '',
 })
+
+const userInfo = computed(() => userStore.userInfo)
+
+function initFormData() {
+  if (userInfo.value) {
+    basicForm.email = userInfo.value.email || ''
+    basicForm.nickname = userInfo.value.nickname || userInfo.value.username || ''
+    basicForm.bio = userInfo.value.bio || ''
+    basicForm.country = userInfo.value.country || ''
+    basicForm.region = userInfo.value.region || []
+    basicForm.phone = userInfo.value.phone || ''
+  }
+}
+
+initFormData()
 
 const passwordForm = reactive({
   oldPassword: '',
