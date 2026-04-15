@@ -44,7 +44,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
     redirect: '/dashboard',
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         name: 'Dashboard',
         component: () => import('@pages/Dashboard/index.vue'),
         meta: {
@@ -53,7 +53,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'form',
+        path: '/form',
         name: 'Form',
         component: () => import('@pages/FormPage/index.vue'),
         meta: {
@@ -62,7 +62,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'table',
+        path: '/table',
         name: 'Table',
         component: () => import('@pages/TablePage/index.vue'),
         meta: {
@@ -71,7 +71,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'detail',
+        path: '/detail',
         name: 'Detail',
         component: () => import('@pages/DetailPage/index.vue'),
         meta: {
@@ -80,7 +80,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         },
       },
       {
-        path: 'account',
+        path: '/account',
         name: 'Account',
         redirect: '/account/center',
         meta: {
@@ -89,7 +89,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         },
         children: [
           {
-            path: 'center',
+            path: '/account/center',
             name: 'AccountCenter',
             component: () => import('@pages/AccountPage/AccountCenter.vue'),
             meta: {
@@ -97,7 +97,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
             },
           },
           {
-            path: 'settings',
+            path: '/account/settings',
             name: 'AccountSettings',
             component: () => import('@pages/AccountPage/AccountSettings.vue'),
             meta: {
