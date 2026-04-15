@@ -1,8 +1,19 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
 export default defineConfig({
+  plugins: [vue()],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+      include: ['src/**/*.{js,ts,vue}'],
+      exclude: ['src/**/*.d.ts'],
+    },
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -15,10 +26,5 @@ export default defineConfig({
       '@config': resolve(__dirname, 'src/config'),
       '@layouts': resolve(__dirname, 'src/layouts'),
     },
-  },
-  plugins: [vue()],
-  server: {
-    port: 3000,
-    open: true,
   },
 })
